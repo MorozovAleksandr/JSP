@@ -1,6 +1,7 @@
 package servlet;
 
 import model.Operation;
+import model.User;
 import service.OperationService;
 
 import javax.servlet.ServletException;
@@ -20,7 +21,9 @@ public class CalcServlet  extends HttpServlet {
         final double num2 = Double.parseDouble(req.getParameter("num2"));
         String type = req.getParameter("type");
 
-        Operation operation = new Operation(num1, num2, type);
+        User user = (User) req.getSession().getAttribute("user");
+
+        Operation operation = new Operation(num1, num2, type, user.getUsername());
 
         Operation executedOperation = operationService.execute(operation);
 

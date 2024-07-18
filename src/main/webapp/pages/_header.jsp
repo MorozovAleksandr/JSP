@@ -18,6 +18,12 @@
                 </jstl:if>
                 <jstl:if test="${sessionScope.user != null}">
                     <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/calc">calc</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/history">history</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/logout">logout</a>
                     </li>
                 </jstl:if>
