@@ -1,13 +1,13 @@
 package core.service;
+
 import core.model.Operation;
 import core.repository.OperationRepository;
-import storage.InMemoryOperationStorage;
+import storage.OperationStorage;
+
 import java.util.List;
 import java.util.Optional;
 
-public class OperationService implements OperationRepository {
-    private final InMemoryOperationStorage inMemoryOperationStorage = new InMemoryOperationStorage();
-
+public record OperationService(OperationStorage storage) implements OperationRepository {
     public Operation execute(Operation operation) {
         double result = switch (operation.getType()) {
             case "sum" -> operation.getNum1() + operation.getNum2();
@@ -18,11 +18,11 @@ public class OperationService implements OperationRepository {
         };
 
         operation.setResult(result);
-        inMemoryOperationStorage.save(operation);
+        storage.save(operation);
         return operation;
     }
 
     public Optional<List<Operation>> getAllOperations(String username) {
-        return inMemoryOperationStorage.findAllOperationsByUsername(username);
+        return storage.findAllOperationsByUsername(username);
     }
 }

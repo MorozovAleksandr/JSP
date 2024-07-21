@@ -3,6 +3,7 @@ package servlet;
 import core.model.Operation;
 import core.model.User;
 import core.service.OperationService;
+import storage.InMemoryOperationStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ import java.util.Optional;
 
 @WebServlet("/history")
 public class HistoryServlet extends HttpServlet {
-    private final OperationService operationService = new OperationService();
+    private final OperationService operationService = new OperationService(new InMemoryOperationStorage());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

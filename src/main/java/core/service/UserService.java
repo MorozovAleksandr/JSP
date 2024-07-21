@@ -1,24 +1,23 @@
 package core.service;
-import lombok.Data;
+
 import core.model.User;
-import storage.InMemoryUserStorage;
 import core.repository.UserRepository;
+import storage.UserStorage;
+
 import java.util.Optional;
 
-@Data
-public class UserService implements UserRepository {
-    private final InMemoryUserStorage inMemoryUserStorage = new InMemoryUserStorage();
+public record UserService(UserStorage storage) implements UserRepository {
 
     public void registerUser(User user) {
-        inMemoryUserStorage.save(user);
+        storage.save(user);
     }
 
     public Optional<User> login(String username, String password) {
-        Optional<User> byUsername = inMemoryUserStorage.findByUsername(username);
+        Optional<User> byUsername = storage.findByUsername(username);
 
-        if(byUsername.isPresent()) {
+        if (byUsername.isPresent()) {
             User user = byUsername.get();
-            if(user.getPassword().equals(password)) {
+            if (user.getPassword().equals(password)) {
                 return Optional.of(user);
             }
         }

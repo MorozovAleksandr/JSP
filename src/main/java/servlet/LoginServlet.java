@@ -2,6 +2,7 @@ package servlet;
 
 import core.model.User;
 import core.service.UserService;
+import storage.InMemoryUserStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @WebServlet(value = "/login", name="LoginServlet")
 public class LoginServlet extends HttpServlet {
-    private final UserService userService = new UserService();
+    private final UserService userService = new UserService(new InMemoryUserStorage());
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
