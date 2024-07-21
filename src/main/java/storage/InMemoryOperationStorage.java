@@ -1,6 +1,7 @@
 package storage;
 
 import core.model.Operation;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,7 @@ public class InMemoryOperationStorage implements OperationStorage {
             }
         }
 
-        if(operationsByUsername.isEmpty()) {
+        if (operationsByUsername.isEmpty()) {
             return Optional.empty();
         }
 
