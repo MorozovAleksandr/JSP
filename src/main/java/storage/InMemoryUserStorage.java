@@ -1,7 +1,7 @@
 package storage;
 
 import lombok.Data;
-import model.User;
+import core.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

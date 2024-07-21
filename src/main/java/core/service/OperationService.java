@@ -1,12 +1,11 @@
-package service;
-
-import model.Operation;
+package core.service;
+import core.model.Operation;
+import core.repository.OperationRepository;
 import storage.InMemoryOperationStorage;
-
 import java.util.List;
 import java.util.Optional;
 
-public class OperationService {
+public class OperationService implements OperationRepository {
     private final InMemoryOperationStorage inMemoryOperationStorage = new InMemoryOperationStorage();
 
     public Operation execute(Operation operation) {

@@ -1,14 +1,12 @@
-package service;
-
+package core.service;
 import lombok.Data;
-import model.User;
+import core.model.User;
 import storage.InMemoryUserStorage;
-
-import java.util.List;
+import core.repository.UserRepository;
 import java.util.Optional;
 
 @Data
-public class UserService {
+public class UserService implements UserRepository {
     private final InMemoryUserStorage inMemoryUserStorage = new InMemoryUserStorage();
 
     public void registerUser(User user) {

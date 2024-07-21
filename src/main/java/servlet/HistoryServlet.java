@@ -1,8 +1,8 @@
 package servlet;
 
-import model.Operation;
-import model.User;
-import service.OperationService;
+import core.model.Operation;
+import core.model.User;
+import core.service.OperationService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
