@@ -1,14 +1,14 @@
 package storage;
 
 import lombok.Data;
-import model.User;
+import core.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Data
-public class InMemoryUserStorage {
+public class InMemoryUserStorage implements UserStorage {
     private static final List<User> users = new ArrayList<>();
 
     public void save(User user) {

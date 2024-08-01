@@ -2,7 +2,7 @@ package servlet;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import model.User;
+import core.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
